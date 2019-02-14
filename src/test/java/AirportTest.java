@@ -10,7 +10,7 @@ public class AirportTest {
 
     @Before
     public void before(){
-        airport = new Airport("Edinburgh", "EDI", "Edinburgh", "UK");
+        airport = new Airport("Edinburgh Airport", "EDI", "Edinburgh", "UK");
     }
 
 
