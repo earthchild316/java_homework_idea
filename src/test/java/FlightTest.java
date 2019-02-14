@@ -42,12 +42,7 @@ public class FlightTest {
         assertEquals(0, flight.getAllAvailableSeats().size());
     }
 
-    @Test
-    public void canAddPassenger(){
-        Passenger passenger = new Passenger("John", 100);
-        flight.addPassenger(passenger);
-        assertEquals(1, flight.getPassengers().size());
-    }
+
 
     @Test
     public void canGetZeroIfNoAllocationForSeats(){
@@ -58,6 +53,27 @@ public class FlightTest {
     public void canAddSeatAllocation(){
         flight.assignSeatAllocation(SeatType.ECONOMY, 40);
         assertEquals(40, flight.getAvailableSeatsByType(SeatType.ECONOMY));
+    }
+
+
+    @Test
+    public void canAddPassenger(){
+        flight.assignSeatAllocation(SeatType.ECONOMY, 40);
+        Passenger passenger = new Passenger("John", 100);
+        flight.addPassenger(passenger, SeatType.ECONOMY);
+        assertEquals(1, flight.getPassengers().size());
+        assertEquals(39, flight.getAvailableSeatsByType(SeatType.ECONOMY));
+    }
+
+    @Test
+    public void wontAddPassengerIfNoAllocation(){
+        flight.assignSeatAllocation(SeatType.ECONOMY, 1);
+        Passenger passenger1 = new Passenger("John", 100);
+        Passenger passenger2 = new Passenger("Alex", 100);
+        flight.addPassenger(passenger1, SeatType.ECONOMY);
+        flight.addPassenger(passenger2, SeatType.ECONOMY);
+        assertEquals(1, flight.getPassengers().size());
+        assertEquals(0, flight.getAvailableSeatsByType(SeatType.ECONOMY));
     }
 
 

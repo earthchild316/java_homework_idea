@@ -39,10 +39,6 @@ public class Flight {
         return availableSeats;
     }
 
-    public void addPassenger(Passenger passenger) {
-        this.passengers.add(passenger);
-    }
-
     public void assignSeatAllocation(SeatType type, Integer seats){
         this.availableSeats.put(type, seats);
     }
@@ -53,4 +49,15 @@ public class Flight {
         }
         return this.availableSeats.get(type);
     }
+
+    public void addPassenger(Passenger passenger, SeatType type) {
+        int availableSeats = this.getAvailableSeatsByType(type);
+
+        if ( availableSeats > 0) {
+            this.passengers.add(passenger);
+            this.availableSeats.replace(type, availableSeats - 1);
+        }
+    }
+
+
 }
