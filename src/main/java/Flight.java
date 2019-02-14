@@ -35,8 +35,22 @@ public class Flight {
         return passengers;
     }
 
-    public HashMap<SeatType, Integer> getAvailableSeats() {
+    public HashMap<SeatType, Integer> getAllAvailableSeats() {
         return availableSeats;
     }
 
+    public void addPassenger(Passenger passenger) {
+        this.passengers.add(passenger);
+    }
+
+    public void assignSeatAllocation(SeatType type, Integer seats){
+        this.availableSeats.put(type, seats);
+    }
+
+    public int getAvailableSeatsByType(SeatType type) {
+        if (this.availableSeats.get(type) == null){
+            return 0;
+        }
+        return this.availableSeats.get(type);
+    }
 }
