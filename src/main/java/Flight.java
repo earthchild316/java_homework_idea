@@ -20,23 +20,23 @@ public class Flight {
 
 
     public String getFlightNumber() {
-        return flightNumber;
+        return this.flightNumber;
     }
 
     public Airport getDepartureAirport() {
-        return departureAirport;
+        return this.departureAirport;
     }
 
     public Airport getDestination() {
-        return destination;
+        return this.destination;
     }
 
     public ArrayList<Passenger> getPassengers() {
-        return passengers;
+        return this.passengers;
     }
 
     public HashMap<SeatType, Integer> getAllAvailableSeats() {
-        return availableSeats;
+        return this.availableSeats;
     }
 
     public void assignSeatAllocation(SeatType type, Integer seats){
