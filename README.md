@@ -1,4 +1,4 @@
-# java_homework_idea
+# Java homework idea
 
 Model exercise based on a flight tracking system, using java.
 
